@@ -239,6 +239,7 @@ body {
 	margin-top: 22px;
 	position: relative;
 	overflow: hidden;
+	border-radius: 22px;
 }
 
 .header-logo ul {

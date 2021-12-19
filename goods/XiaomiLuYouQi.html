@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>小米商城</title>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/test.css">
+		<script src="../js/vue.js"></script>
+		<script src="../js/index.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 该div用于实例化vue -->
+		<div id="app">
+			<!-- 头部 -->
+			<header id="header">
+				<!-- 顶部导航栏start -->
+				<div class="site-topbar">
+					<div class="container">
+						<!-- 导航栏 -->
+						<nav class="topbar-nav">
+							<a href="../index.html">小米商城</a>
+							<span class="sep">|</span>
+							<template v-for="i in topbarList">
+								<a href="javascript:;">{{i}}</a>
+								<span class="sep">|</span>
+							</template>
+							<a href="javascript:;" id="J_siteDownloadApp">
+								下载app
+								<span class="appcode">
+									<img src="../../img/header/download.png" alt="小米商城" width="90" height="90">
+									小米商城APP
+								</span>
+							</a>
+							<span class="sep">|</span>
+							<!-- TODO 此处待插入模态窗 -->
+							<a href="javascript:;">Web课程设计&nbsp;&nbsp;&nbsp;&nbsp;丁超 韩洋 文静 洪金明</a>
+						</nav>
+						<!-- 购物车 -->
+						<div id="J_miniCartTrigger" class="topbar-cart">
+							<a href="../shopping.html">
+								<em></em>
+								购物车
+								<span>（0）</span>
+							</a>
+							<div id="J_miniCartMenu" class="cart-menu">
+								购物车中还没有商品，赶紧选购吧！
+							</div>
+						</div>
+						<!-- 登录注册 -->
+						<div id="J_siteInfo" class="topbar-info">
+							<a href="../login.html">登录</a>
+							<span class="sep">|</span>
+							<a href="../register.html">注册</a>
+							<span class="sep">|</span>
+							<a href="javascript:;">消息通知</a>
+						</div>
+						<div id="J_siteUserInfo" class="topbar-info">
+							<span class="user">
+								<a rel="nofollow" class="user-name" href="javascript:;" target="_blank">
+									<span class="name">天然呆·H</span>
+									<i class="iconfont-arrow-down-mini">↓</i>
+								</a>
+								<div id="J_userMenuWrapper" class="user-menu-wrapper">
+									<ul class="user-menu">
+										<li><a rel="nofollow" href="javascript:;"小米>个人中心</a></li>
+										<li><a rel="nofollow" href="javascript:;"小米>评价晒单</a></li>
+										<li><a rel="nofollow" href="javascript:;"小米>我的喜欢</a></li>
+										<li><a rel="nofollow" href="javascript:;"小米>小米账户</a></li>
+										<li><a rel="nofollow" id="J_userLogout" href="javascript:;">退出登录</a></li>
+									</ul>
+								</div>
+							</span>
+							<span class="sep">|</span>
+							<a href="javascript:;">消息通知</a>
+							<span class="sep">|</span>
+							<a href="javascript:;">我的订单</a>
+						</div>
+					</div>
+				</div>
+				<!-- 顶部导航栏end -->
+				<!-- 头部导航栏start -->
+				<div class="site-header">
+					<div class="container myclear">
+						<!-- 小米logo -->
+						<div class="header-logo">
+							<ul class="myclear">
+								<li><a href="../index.html"></a></li>
+								<li></li>
+							</ul>
+						</div>
+						<!-- 导航栏 -->
+						<nav class="header-nav myclear">
+							<ul id="J_childrenList">
+								<template v-for="title in title">
+									<li class="nav-item">
+										<a href="javascript:void(0);">{{title.name}}</a>
+										<div class="item-children">
+											<div class="container">
+												<ul class="children-list myclear">
+													<template v-for="i in 6">
+														<li>
+															<a :href="title.href">
+																<div class="figure-thumb">
+																	<img :src="title.img_src" width="160" height="110" :alt="title.title">
+																</div>
+																<div class="title">{{title.title}}</div>
+																<p class="price">{{title.price}}</p>
+															</a>
+														</li>
+													</template>
+												</ul>
+											</div>
+										</div>
+									</li>
+								</template>
+								<li class="nav-item">
+									<a href="javascript:void(0);">服务</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0);">社区</a>
+								</li>
+							</ul>
+						</nav>
+						<!-- 搜索 -->
+						<div class="myclear header-search ">
+							<input id="search" class="search-text" type="text" id="search" placeholder="小米平板5 Pro"/>
+							<input class="search-btn" type="text" />
+							<!-- <div class="search-hot-words">
+								<a href="javascript:;">小米9 Pro 5G</a>
+								<a href="javascript:;">Redmi Note 8</a>
+							</div> -->
+							<div id="J_keywordList" class="keyword-list">
+								<ul class="result-list">
+									<li v-for="i in searchList"><a href="javascript:;">{{i}}</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 头部导航栏end -->
+			</header>
+
+      <!-- 主页 -->
+			<div>
+
+        <!-- title -->
+        <div>
+          <div class="xm-product-box">
+            <div class="nav-bar">
+              <div class="container">
+                <h2>
+                  {{body.title1}}
+                </h2>
+                <div class="con">
+                  <div class="left">
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript: void(0);">
+                      {{body.title2}}
+                    </a>
+                  </div>
+                  <div class="right">
+                    <a href="javascript: void(0);" target="">
+                      概述页
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript: void(0);" target="">
+                      参数页
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript: void(0);">
+                      F码通道
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript:void(0);" class="J_contactBtn" product_id="15415">
+                      咨询客服
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a class="J_nav_comment " href="javascript: void(0);">
+                      用户评价
+                    </a>
+                    <a class="btn btn-small btn-primary J_nav_buy " href="javascript: void(0);"
+                   小米>
+                      立即购买
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="xm-product-box nav-bar-hidden J_nav_hide ">
+            <div class="nav-bar">
+              <div class="container">
+                <h2>
+                  {{body.title1}}
+                </h2>
+                <div class="con">
+                  <div class="left">
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript: void(0);">
+                      {{body.title2}}
+                    </a>
+                  </div>
+                  <div class="right">
+                    <a href="javascript: void(0);" target="">
+                      概述页
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript: void(0);" target="">
+                      参数页
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript: void(0);"小米>
+                      F码通道
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a href="javascript:void(0);" class="J_contactBtn" product_id="15415">
+                      咨询客服
+                    </a>
+                    <span class="separator">
+                      |
+                    </span>
+                    <a class="J_nav_comment " href="javascript: void(0);">
+                      用户评价
+                    </a>
+                    <a class="btn btn-small btn-primary J_nav_buy " href="javascript: void(0);"
+                   小米>
+                      立即购买
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- body -->
+        <div>
+          <img :src="body.img_src" alt="" style="padding-left: 0%; width: 100%;"></div>
+          <img src="../img/phone/10.png" alt="" style="padding-left: 0%; width: 100%;"></div>
+        </div>
+
+      </div>
+
+      <!-- 页脚 -->
+      <footer>
+        <div class="site-footer">
+          <div class="container">
+            <div class="footer-service">
+              <ul class="list-service myclear">
+                <li><a href="javascript:;"><em class="em1"></em>预约维修服务</a></li>
+                <li><a href="javascript:;"><em class="em2"></em>7天无理由退货</a></li>
+                <li><a href="javascript:;"><em class="em3"></em>15天免费换货</a></li>
+                <li><a href="javascript:;"><em class="em4"></em>满99元包邮</a></li>
+                <li><a href="javascript:;"><em class="em5"></em>520余家售后网点</a></li>
+              </ul>
+            </div>
+            <div class="footer-links myclear">
+              <dl class="col-links">
+                <dt>帮助中心</dt>
+                <dd><a href="javascript:;">账户管理</a></dd>
+                <dd><a href="javascript:;">购物指南</a></dd>
+                <dd><a href="javascript:;">订单操作</a></dd>
+              </dl>
+              <dl class="col-links ">
+                <dt>服务支持</dt>
+                <dd><a href="javascript:;">售后政策</a></dd>
+                <dd><a href="javascript:;">自助服务</a></dd>
+                <dd><a href="javascript:;">相关下载</a></dd>
+              </dl>
+              <dl class="col-links ">
+                <dt>线下门店</dt>
+                <dd><a href="javascript:;">小米之家</a></dd>
+                <dd><a href="javascript:;">服务网点</a></dd>
+                <dd><a href="javascript:;">授权体验店</a></dd>
+              </dl>
+              <dl class="col-links ">
+                <dt>关于小米</dt>
+                <dd><a href="javascript:;">了解小米</a></dd>
+                <dd><a href="javascript:;">加入小米</a></dd>
+                <dd><a href="javascript:;">投资者关系</a></dd>
+              </dl>
+              <dl class="col-links ">
+                <dt>关注我们</dt>
+                <dd><a href="javascript:;">新浪微博</a></dd>
+                <dd><a href="javascript:;">官方微信</a></dd>
+                <dd><a href="javascript:;">联系我们</a></dd>
+              </dl>
+              <dl class="col-links ">
+                <dt>特色服务</dt>
+                <dd><a href="javascript:;">F 码通道</a></dd>
+                <dd><a href="javascript:;">礼物码</a></dd>
+                <dd><a href="javascript:;">防伪查询</a></dd>
+              </dl>
+              <div class="col-contact">
+                <p class="phone">400-100-5678</p>
+                <p>周一至周日 8:00-18:00<br>（仅收市话费）</p>
+                <a class="btn btn-line-primary btn-small">
+                  <em></em>
+                  人工客服
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="site-info">
+          <div class="container">
+            <div class="logo ir">小米官网</div>
+            <div class="info-text">
+              <p class="sites">
+                <a rel="nofollow" href="../index.html" target="_blank">小米商城</a>
+                <span class="sep">|</span>
+                <a href="javascript:;">MIUI</a>
+                <span class="sep">|</span>
+                <a href="javascript:;">米家</a>
+                <span class="sep">|</span>
+                <a href="javascript:;">米聊</a>
+                <span class="sep">|</span>
+                <a href="javascript:;">多看</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">游戏</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">政企服务</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">小米天猫店</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">小米集团隐私政策</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">小米公司儿童信息保护规则</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">小米商城隐私政策</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">小米商城用户协议</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">问题反馈</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">廉正举报</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">诚信合规</a>
+                <span class="sep">|</span>
+                <a rel="nofollow" href="javascript:;">Select Location</a>
+              </p>
+              <p>
+                ©
+                <a href="javascript:;">mi.com</a> 京ICP证110507号
+                <a href="http://beian.miit.gov.cn/">京ICP备10046444号</a>
+                <a rel="nofollow" href="javascript:;">京公网安备11010802020134号</a>
+                <a href="//www.mi.com/culture-license/">京网文[2017]1530-131号</a><br>
+                <a href="//www.mi.com/medical/record/">（京）网械平台备字（2018）第00005号</a>
+                <a href="//www.mi.com/medical/qualification/">互联网药品信息服务资格证 (京)-非经营性-2014-0090</a>
+                <a href="//www.mi.com/business-license/">营业执照</a>
+                <a href="//www.mi.com/medical/list/">医疗器械质量公告</a> <br>
+                <a href="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/af5b8ef38e7d57c5ee7fa4289ccf4df8.png">增值电信业务许可证</a>&nbsp;网络食品经营备案（京）【2018】WLSPJYBAHF-12&nbsp;
+                <a href="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/fe7383e11127caea371f17156f429a1e.png">食品经营许可证</a> <br>
+                违法和不良信息举报电话：185-0130-1238&nbsp;<a href="//www.mi.com/static/intellectual/index.html">知识产权侵权投诉</a>&nbsp;本网站所列数据，除特殊说明，所有数据均出自我司实验室测试
+              </p>
+            </div>
+            <div class="info-links">
+              <a href="javascript:;"><img src="../img/footer/xm1.png" alt=""></a>
+              <a href="javascript:;"><img src="../img/footer/xm2.png" alt=""></a>
+              <a href="javascript:;"><img src="../img/footer/xm3.png" alt=""></a>
+              <a href="javascript:;"><img src="../img/footer/xm4.png" alt=""></a>
+              <a href="javascript:;"><img src="../img/footer/xm5.png" alt=""></a>
+            </div>
+          </div>
+          <div class="slogan ir">探索黑科技，小米为发烧而生</div>
+        </div>
+        <!-- 固定 -->
+        <div class="div_home">
+          <a href="javascript:;" class="home1"><span>米码</span></a>
+          <a href="javascript:;" class="home2"><span>个人中心</span></a>
+          <a href="javascript:;" class="home3"><span>售后服务</span></a>
+          <a href="javascript:;" class="home4"><span>个人服务</span></a>
+          <a href="javascript:;" class="home5"><span>购物车（0）</span></a>
+          <a href="javascript:;header" class="img_yincang"><span>回到顶部</span></a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          topbarList: ['loT', 'MIUI', '云服务', '金融', '有品', '小爱开放平台', '企业团购', '资质证照', '协议规则'],
+          title: [
+						{
+							name: 'Xiaomi手机',
+							title: 'Xiaomi MIX FOLD',
+							price: '7999起',
+							img_src: '../img/header/Xiaomi_MIX_FOLD.webp',
+							href: '../goods/XiaoMiFOLD.html'
+						},
+						{
+							name: 'Redmi红米',
+							title: 'Redmi Note 11 Pro系列',
+							price: '1799起',
+							img_src: '../img/header/Redmi_Note_11_Pro.webp',
+							href: '../goods/RedmiNote11Pro.html'
+						},
+						{
+							name: '电视',
+							title: '小米电视 大师 65英寸OLED',
+							price: '8999起',
+							img_src: '../img/header/小米电视_大师_65英寸OLED.webp',
+							href: '../goods/XiaomiDianShi.html'
+						},
+						{
+							name: '笔记本',
+							title: '小米笔记本 Pro 14 锐龙版',
+							price: '5499起',
+							img_src: '../img/header/小米笔记本_Pro_14_锐龙版.webp',
+							href: '../goods/XiaomiBook.html'
+						},
+						{
+							name: '平板',
+							title: '小米平板5',
+							price: '1999起',
+							img_src: '../img/header/小米平板5.webp',
+							href: '../goods/XiaomiPad.html'
+						},
+						{
+							name: '家电',
+							title: '米家风冷对开门冰箱 483L',
+							price: '2399起',
+							img_src: '../img/header/米家风冷对开门冰箱_483L.webp',
+							href: '../goods/XiaomiBingXiang.html'
+						},
+						{
+							name: '路由器',
+							title: '小米路由器AX6000',
+							price: '599起',
+							img_src: '../img/header/小米路由器AX6000.webp',
+							href: '../goods/XiaomiLuYouQi.html'
+						}
+					],
+          body: {
+              title1: '小米路由器AX6000',
+              title2: '小米路由器',
+              img_src: '../img/phone/9.png'
+          }
+        }
+      })
+    </script>
+    </body>
+  </html>
+  
