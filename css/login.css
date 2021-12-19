@@ -21,6 +21,7 @@ a {
 	width: 200px;
 	height: 98px;
 	background: url(../img/login/placeholder.png) no-repeat;
+	border-radius: 22px;
 }
 
 /* 主要内容 */
