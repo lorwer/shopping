@@ -1,0 +1,508 @@
+/* 重置页面 */
+@import url("reset.css");
+
+body {
+	background-color: #f9f9f9;
+	color: #666;
+	font-size: 14px;
+	font-family: arial, "Hiragino Sans GB", "Microsoft YaHei", "微軟正黑體", "儷黑 Pro", sans-serif;
+}
+
+a {
+	color: #9d9d9d;
+}
+
+input {
+	color: #333;
+}
+
+input {
+	background: none;
+	border: 0 none;
+}
+
+/* 主要内容 */
+.main {
+	width: 854px;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+
+.device-frame {
+	background-color: #fff;
+	min-height: 400px;
+}
+
+/* logo */
+.external_logo_area {
+	padding-bottom: 40px;
+	display: block;
+}
+
+.milogo {
+	width: 49px;
+	height: 48px;
+	margin: 0 auto;
+	display: block;
+	cursor: default;
+	background-color: #FF6700;
+	background-image: url(../img/login/mi-logo.png);
+	background-repeat: no-repeat;
+}
+
+/* 标题 */
+.title_big30 {
+	text-align: center;
+	font-size: 30px;
+	font-weight: normal;
+	color: #333;
+	line-height: 1.5;
+}
+
+/* 登录页面内容盒子 */
+.regbox {
+	width: 332px;
+	padding: 30px 0;
+	line-height: 20px;
+	font-size: 14px;
+	margin: 0 auto;
+}
+
+/* 国家地区 */
+.regbox .tit_normal {
+	padding-bottom: 5px;
+	color: #333;
+	font-weight: normal;
+}
+
+.listwrap {
+	position: relative;
+}
+
+/* 国家地区文本框 */
+.tits {
+	height: 40px;
+	width: 332px;
+	padding-left: 14px;
+	line-height: 40px;
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid #e8e8e8;
+	color: #555;
+	cursor: pointer;
+}
+
+.tits p {
+	float: left;
+	width: 275px;
+	border-right: 1px solid #e8e8e8;
+	cursor: pointer;
+}
+
+.icon_cirarr {
+	float: right;
+	background: url(../img/register/icon_user.png);
+	width: 16px;
+	height: 16px;
+	margin: 11px 12px 0 12px;
+}
+
+/* 国家地区隐藏下拉框 */
+.country-container-panel {
+	background: #fff;
+	height: 270px;
+	line-height: 30px;
+	border: 1px solid #e8e8e8;
+	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: absolute;
+	left: 0;
+	top: 39px;
+	z-index: 98;
+	display: none;
+}
+
+.search-code {
+	padding: 10px;
+}
+
+.search-code-input {
+	width: 294px;
+	/* height: 32px; */
+	line-height: 32px;
+	padding: 5px 10px 5px 10px;
+	display: block;
+	border: 1px solid #e0e0e0;
+}
+
+.country-container-panel .header {
+	cursor: default;
+}
+
+.country-container-panel .header,
+.country-container-panel h6 {
+	background: #fcdecc;
+	padding-left: 10px;
+	margin-bottom: 6px;
+	line-height: 30px;
+	color: #ef5b00 !important;
+}
+
+.country-container-panel .record,
+.country-container-panel p {
+	padding: 0 10px;
+	line-height: 39px;
+	clear: both;
+	overflow: hidden;
+	color: #000;
+	border-bottom: 1px solid #e0e0e0;
+	*zoom: 1;
+	cursor: pointer;
+}
+
+.country-container-panel .record span {
+	height: 39px;
+	overflow: hidden;
+}
+
+.country-container-panel .record-country {
+	float: left;
+	max-width: 74%;
+	color: #000;
+	cursor: pointer;
+}
+
+.country-container-panel .record-code {
+	float: right;
+	max-width: 20%;
+	color: #9d9d9d;
+}
+
+/* 提示 */
+.region_tip_text {
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+/* 编号文本框 */
+.listwrap_inside_panel .listwrap {
+	float: left;
+}
+
+.listwrap_inside_panel .tits {
+	width: 74px;
+	text-align: center;
+	padding: 0 9px;
+}
+
+.listwrap_inside_panel .tits p {
+	width: auto;
+	border-right: 0 none;
+}
+
+.icon_arrow {
+	float: left;
+	margin: 17px 0 0 10px;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #9d9d9d transparent transparent transparent;
+}
+
+.listwrap_inside_panel .inputbg {
+	float: left;
+}
+
+.inputbg {
+	padding-bottom: 15px;
+}
+
+.listwrap_inside_panel .inputbg input {
+	width: 246px;
+}
+
+.listwrap_inside_panel .labelbox {
+	margin-left: -1px;
+	position: relative;
+	z-index: 3;
+	padding-left: 10px;
+}
+
+.labelbox,
+.input_bg {
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+}
+
+.labelbox,
+.input_bg,
+.tits_list,
+.borderbox {
+	border: 1px solid #e8e8e8;
+}
+
+/* 输入错误提示 */
+.err_tip {
+	margin-bottom: 5px;
+	line-height: 20px;
+	font-size: 14px;
+	color: #f66;
+	display: none;
+}
+
+.icon_error {
+	width: 14px;
+	height: 14px;
+	margin: -1px 5px 0 0;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	background-image: url(../img/register/icon_user.png);
+	background-repeat: no-repeat;
+	background-position: 100% 0;
+}
+
+.err_tip span {
+	vertical-align: middle;
+}
+
+/* 按钮 */
+.btn_reg_1 {
+	background-color: #ff6700;
+	margin-top: 15px;
+	border: 1px solid rgba(186, 186, 186, 0.3);
+	color: #fff;
+	margin-top: 70px;
+}
+
+.btn332 {
+	width: 330px;
+	height: 42px;
+	margin: 0 auto;
+	line-height: 42px;
+	text-align: center;
+	font-size: 14px;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #e8e8e8;
+	overflow: hidden;
+}
+
+/* 声明 */
+.privacy_box {
+	text-align: center;
+	padding-top: 40px;
+}
+
+.msg {
+	color: #9d9d9d;
+}
+
+.n_checked {
+	padding: 10px 0;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.msg a {
+	color: #333;
+}
+
+.ftbold,
+.msg em,
+.msg a {
+	font-weight: bold;
+}
+
+/* 验证码页面盒子 */
+.regboxTwo,
+.regboxthree,
+.regbox-accunt {
+	width: 332px;
+	padding: 30px 0;
+	line-height: 20px;
+	margin: 0 auto;
+	display: none;
+}
+
+.step2_txt,
+.step2_txt p {
+	padding-bottom: 10px;
+}
+
+.step2_txt .address-place {
+	color: #ff6700;
+}
+
+/* 文本框 */
+.regboxTwo .inputcode {
+	margin-top: 10px;
+	width: 580px;
+	height: auto;
+	padding-bottom: 15px;
+}
+
+.labelbox,
+.input_bg {
+	height: 40px;
+	line-height: 40px;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.labelbox,
+.input_bg,
+.tits_list,
+.borderbox {
+	border: 1px solid #e8e8e8;
+}
+
+.labelbox input,
+.input_bg input {
+	height: 20px;
+	line-height: 20px;
+	padding: 10px;
+	display: inline-block;
+}
+
+.inputcode .resendcode {
+	width: 210px;
+}
+
+.remain {
+	margin-left: 8px;
+	vertical-align: middle;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #e8e8e8;
+}
+
+.remain a {
+	color: #000;
+	cursor: pointer;
+	padding: 0 10px;
+	display: block;
+}
+
+/* 错误提示 */
+.step2_txt .err_tip {
+	margin-bottom: 10px;
+}
+
+.sns_unavaliable a {
+	color: #46639c;
+}
+
+.fixed_bot,
+.fixed_bot .btn_reg_2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* 设置密码 */
+.regboxthree p {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.regboxthree .title {
+	margin-bottom: 15px;
+}
+
+.regboxthree .regboxthree-code {
+	width: 330px;
+	margin-bottom: 10px;
+}
+
+.regboxthree .btn_reg_1 {
+	margin-top: 5px;
+	margin-bottom: 50px;
+}
+
+.regboxthree .title_tis {
+	font-weight: 400;
+	font-size: 14px;
+}
+
+/* 登录 */
+.regbox-accunt .step2_txt {
+	text-align: center;
+}
+
+.regbox-accunt p {
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.regbox-accunt .btn_reg_1 {
+	margin-top: 58px;
+}
+
+/* 底部 */
+.footer-wrap {
+	background-color: #f9f9f9;
+	height: 80px;
+	text-align: center;
+}
+
+.footer-wrap .lang-select-list li {
+	display: inline-block;
+}
+
+.lang-select-list a {
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.lang-select-list a:hover,
+.lang-select-list a.current {
+	color: #333;
+}
+
+.footer-intro {
+	padding: 10px;
+	color: #9d9d9d;
+}
+
+/* 扫码登录 */
+.loginbox .ercode_pannel {
+	width: 410px;
+	height: 475px;
+	display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+}
+
+.ercode_pannel .ercode_box {
+	position: static;
+	left: 50%;
+	top: 50%;
+}
+
+.ercode_box .code_iframe {
+	width: 302px;
+	height: 180px;
+	background-image: url(../img/login/iframe.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.custom_sub_txt {
+	padding-top: 14px;
+	font-size: 14px;
+	display: block;
+	text-align: center;
+	color: #757575;
+}
+
+.custom_sub_txt span {
+	padding: 0 5px;
+	color: #ff6700;
+}
